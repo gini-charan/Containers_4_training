@@ -1,0 +1,110 @@
+version: '3'
+ 
+services:
+  ansible-control:
+    build:
+      context: . 
+      dockerfile: Dockerfile
+    hostname: ansible-control
+ 
+  kafka1:
+    build:
+      context: ./  # This is the directory where your Dockerfile-inventory-node resides
+      dockerfile: Dockerfile  # This is the name of your Dockerfile
+    hostname: kafka1
+    privileged: true
+    cap_add:
+      - ALL
+    ports:
+      - "2225:22"
+    tmpfs:
+      - /run/lock
+      - /run
+      - /tmp
+    environment:
+      - DEBIAN_FRONTEND=non-interactive
+ 
+  kafka2:
+    build:
+      context: ./ 
+      dockerfile: Dockerfile 
+    hostname: kafka2
+    privileged: true
+    cap_add:
+      - ALL
+    ports:
+      - "2226:22"
+    tmpfs:
+      - /run/lock
+      - /run
+      - /tmp
+    environment:
+      - DEBIAN_FRONTEND=non-interactive      
+ 
+  kafka3:
+    build:
+      context: ./  
+      dockerfile: Dockerfile
+    hostname: kafka3
+    privileged: true
+    cap_add:
+      - ALL
+    ports:
+      - "2227:22"
+    tmpfs:
+      - /run/lock
+      - /run
+      - /tmp
+    environment:
+      - DEBIAN_FRONTEND=non-interactive
+ 
+  connect:
+    build:
+      context: ./  
+      dockerfile: Dockerfile
+    hostname: connect
+    privileged: true
+    cap_add:
+      - ALL
+    ports:
+      - "2229:22"
+    tmpfs:
+      - /run/lock
+      - /run
+      - /tmp
+    environment:
+      - DEBIAN_FRONTEND=non-interactive
+ 
+  schema-registry:
+    build:
+      context: ./  
+      dockerfile: Dockerfile
+    hostname: schema-registry
+    privileged: true
+    cap_add:
+      - ALL
+    ports:
+      - "2230:22"
+    tmpfs:
+      - /run/lock
+      - /run
+      - /tmp
+    environment:
+      - DEBIAN_FRONTEND=non-interactive
+  control-center:
+    build:
+      context: ./  
+      dockerfile: Dockerfile
+    hostname: control-center
+    privileged: true
+    cap_add:
+      - ALL
+    ports:
+      - "2228:22"
+      - "9021:9021"
+    tmpfs:
+      - /run/lock
+      - /run
+      - /tmp:exec,mode=777
+    environment:
+      - DEBIAN_FRONTEND=non-interactive
