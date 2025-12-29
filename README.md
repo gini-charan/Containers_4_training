@@ -21,6 +21,18 @@ docker compose exec -it <service name> bash
 
 ```
 
+### Generate ssh key in ansible node 
+
+```sh
+ssh-keygen -t rsa -b 4096
+```
+
+### Exit ansible node and run this to add ssh keys in authorized keys for all other nodes
+```sh
+chmod +x ssh.sh
+./ssh.sh
+```
+
 ### Destroy the environment
 
 ```sh
