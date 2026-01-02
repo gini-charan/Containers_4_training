@@ -4,6 +4,10 @@
 # Clone using SSH
 git clone git@github.com:Charans97/containers_4_training.git
 ```
+### Select Dockerfile based on os requirement
+Dockerfile is for ubuntu
+Dockerfile-rhel for red-hat
+
 ### Create the containers
 ```sh
 docker compose up -d
