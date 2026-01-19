@@ -2,7 +2,7 @@
 
 ```sh
 # Clone using SSH
-git clone git@github.com:Charans97/containers_4_training.git
+git clone https://github.com/gini-charan/Containers_4_training.git
 ```
 ### Select Dockerfile based on os requirement
 Dockerfile is for ubuntu
